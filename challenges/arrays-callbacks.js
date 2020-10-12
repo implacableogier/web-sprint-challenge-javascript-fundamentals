@@ -20,7 +20,15 @@ const zooAnimals = [
 The zoos want to display both the scientific name and the animal name in front of the habitats. Populate the displayNames array with only the animal_name and scientific_name of each animal. displayNames will be an array of strings, and each string should follow this pattern: "Name: Jackal, asiatic, Scientific: Canis aureus."
 
 */
+//create a blank array to push to
 const displayNames = [];
+
+//use .forEach to iterate through the original array and push only animal_name and scientific_name to the new array.
+zooAnimals.forEach(function(array) {
+  displayNames.push(`Name: ${array.animal_name}, Scientific: ${array.scientific_name}`)
+})
+
+//log results
 console.log(displayNames);
 
 /* Request 2: .map()
@@ -29,7 +37,11 @@ The zoos need a list of all their animal's names (animal_name only) converted to
 
 */
 
-const lowCaseAnimalNames
+//create a new array and set it equal to the results of the .map function results.
+const lowCaseAnimalNames = zooAnimals.map(function(array){
+  return array.animal_name.toLocaleLowerCase();
+})
+
 console.log(lowCaseAnimalNames);
 
 /* Request 3: .filter() 
@@ -37,7 +49,11 @@ console.log(lowCaseAnimalNames);
 The zoos are concerned about animals with a lower population count. Using filter, create a new array of objects called lowPopulationAnimals which contains only the animals with a population less than 5.
 
 */
-const lowPopulationAnimals
+// new array set equal to the results of the .filter function
+const lowPopulationAnimals = zooAnimals.filter(function(array){
+  return array.population < 5;
+})
+
 console.log(lowPopulationAnimals);
 
 /* Request 4: .reduce() 
@@ -45,7 +61,11 @@ console.log(lowPopulationAnimals);
 The zoos need to know their total animal population across the United States. Find the total population from all the zoos using the .reduce() method. Remember the reduce method takes two arguments: a callback (which itself takes two args), and an initial value for the count.
 
 */
-let populationTotal = 0;
+//use populationTotal variable to store the value of the accumulator function of .reduce
+let populationTotal = zooAnimals.reduce(function(accumulator, item){
+  return accumulator + item.population;
+} ,0)
+
 console.log(populationTotal);
 
 
